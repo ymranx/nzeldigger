@@ -1,7 +1,8 @@
 var request    = require('request'),
-    events     = require('events');
+    events     = require('events'),
+	helper     = require('./nzelhelper');
 	
-var access_token = 'your_angellist_acess_token';
+var access_token = 'Your-Angel-List-access-Token';
 
 var nzelDigger = function(accessToken) {
     var _this         = this;
@@ -18,6 +19,7 @@ var nzelDigger = function(accessToken) {
          return;
       }
        _this.lastPage = Math.ceil(JSON.parse(body).total/50);
+	   console.log( _this.lastPage);
        _this.emit('ready');
     });
 }
@@ -29,6 +31,7 @@ nzelDigger.prototype.getJobs = function() {
   return function*() {
     while(_this.page <= _this.lastPage) {
 	curUrl = _this.baseJobUrl +'?page=' + _this.page++ + '&per_page=50&access_token=' + _this.accessToken;
+	console.log(curUrl);
         yield requestJobList(curUrl);
     }
   }
@@ -59,5 +62,5 @@ var jobHandler = function(error, response, body) {
 		console.log(error);
 		return;
 	}
-	console.log(body);
+	console.log(helper.getBasicProperties(JSON.parse(body)));
 }
