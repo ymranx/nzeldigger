@@ -2,8 +2,6 @@ var request    = require('request'),
     events     = require('events'),
 	helper     = require('./nzelhelper');
 	
-var access_token = 'Your-Angel-List-access-Token';
-
 var nzelDigger = function(accessToken) {
     var _this         = this;
     this.accessToken  = accessToken;
@@ -44,23 +42,4 @@ function requestJobList(jobUrl) {
   }
 }
 
-
-var nzel = new nzelDigger(access_token);
-
-nzel.on('ready', function() {
-    var job = nzel.getJobs();
-    for(var jb of job()) {
-      jb(jobHandler);
-    }
-});
-
-nzel.on('error', function(error) {
-    console.log(error);
-});
-var jobHandler = function(error, response, body) {
-	if(error) {
-		console.log(error);
-		return;
-	}
-	console.log(helper.getBasicProperties(JSON.parse(body)));
-}
+module.exports = nzelDigger;
