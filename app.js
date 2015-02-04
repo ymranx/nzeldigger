@@ -1,4 +1,5 @@
 var nzelDigger = require('./nzeldigger');
+	helper     = require('./nzelhelper');
 
 var access_token = '8c02255138049f13e8a38f0ded0c047ee40a75984230a87c';
 var nzel = new nzelDigger(access_token);

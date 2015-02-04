@@ -1,6 +1,5 @@
 var request    = require('request'),
-    events     = require('events'),
-	helper     = require('./nzelhelper');
+    events     = require('events');
 	
 var nzelDigger = function(accessToken) {
     var _this         = this;
