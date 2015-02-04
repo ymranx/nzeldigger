@@ -1,7 +1,7 @@
 var nzelDigger = require('./nzeldigger');
 	helper     = require('./nzelhelper');
 
-var access_token = '8c02255138049f13e8a38f0ded0c047ee40a75984230a87c';
+var access_token = 'Your angel list access token';
 var nzel = new nzelDigger(access_token);
 
 nzel.on('ready', function() {
