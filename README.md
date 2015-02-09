@@ -4,7 +4,7 @@ Angel Job list dump
 Run
 ---
 
-iojs nzeldigger
+iojs app.js
 
 Todo
 ---
