@@ -16,23 +16,23 @@ var nzelDigger = function(accessToken) {
          return;
       }
        _this.lastPage = Math.ceil(JSON.parse(body).total/50);
-	   console.log( _this.lastPage);
        _this.emit('ready');
     });
-}
+};
+
 nzelDigger.prototype.__proto__ = events.EventEmitter.prototype;
 
 nzelDigger.prototype.getJobs = function() {
   var _this = this,
 	  curUrl= '';
   return function*() {
-    while(_this.page <= _this.lastPage) {
-	curUrl = _this.baseJobUrl +'?page=' + _this.page++ + '&per_page=50&access_token=' + _this.accessToken;
-	console.log(curUrl);
+    while(_this.page <= 2/*_this.lastPage*/) {
+	curUrl = _this.baseJobUrl +'?page=' + _this.page++ + '&per_page=' + _this.per_page + '&access_token=' + _this.accessToken;
         yield requestJobList(curUrl);
     }
   }
-}
+};
+
 function requestJobList(jobUrl) {
   return function(callback){
     request(jobUrl, function(error, response, body){
