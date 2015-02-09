@@ -1,15 +1,12 @@
 var nzelDigger = require('./nzeldigger'),
 	nzelstore  = require('./nzelstore');
 
-<<<<<<< HEAD
 var access_token = 'your-angel-list-token';
 var nzel 	     = new nzelDigger(access_token);
 var nzelStore    = new nzelstore('mysql-host', 'username', 'password');
 var storeHandler = nzelStore.connect();
-=======
 var access_token = 'Your angel list access token';
 var nzel = new nzelDigger(access_token);
->>>>>>> 99309333a80849bdaf32acb36abfa55599daaf5c
 
 nzel.on('ready', function() {
 	storeHandler(function(err){
@@ -34,11 +31,8 @@ var jobHandler = function jobHandler(error, response, body) {
 		console.log(error);
 		return;
 	}
-<<<<<<< HEAD
 	setTimeout(function(){
 		nzelStore.save(body);
 	}, 50);
-=======
 	console.log(helper.getBasicProperties(JSON.parse(body)));
->>>>>>> 99309333a80849bdaf32acb36abfa55599daaf5c
 }
